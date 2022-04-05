@@ -11,8 +11,8 @@
     print "<div>" . $name . "</div>" ;
     $name = "홍길동";
 
-    print $name;
-    print "<div>" . $name . "</div>" ;
+    print $name."1";
+    print "<div>" . $name ."2". "</div>" ;
 
     $name = "장보고";
     print "<div>" . $name . "</div>";
