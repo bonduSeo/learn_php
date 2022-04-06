@@ -40,14 +40,14 @@
 
     // +=, -=, *=, /=, %= 좌변에 우변을 연산한 값을 좌변에 저장
 
-    print "------<br>";
+    print "333------<br>";
 
     $oprd1 = 10;
     $oprd2 = 20;
 
     $result = $oprd1 == $oprd2;
     print "$oprd1 == $oprd2 : $result <br>"; // 0이 아닌 빈칸되네
-
+   
     $result = $oprd1 != $oprd2;
     print "$oprd1 != $oprd2 : $result <br>"; //참:1
 
