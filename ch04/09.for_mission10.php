@@ -10,8 +10,8 @@
             for($j=1;$j<=$val;$j++)
             {
                 echo "<td>";
-             //   echo "<div id=nm>".$j+$val*($i-1) ."</div>";
-                echo "<div id=nm>".$num++."</div>";
+             //   echo $j+$val*($i-1);
+                echo $num++;
               
                 echo "</td>";
             }

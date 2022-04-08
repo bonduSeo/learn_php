@@ -20,14 +20,20 @@
     print_r($week)."<br>";
     print "<hr>";
     $week[10]="HH";   // 이렇게 직접 인덱스를 지정해서 저장하게되면 실수가 있을수있기때문에 위의 array_push로 값을 추가해주는것을 권장
-    print_r($week)."<br>";
+    print_r($week);
+    print "<br>";
+    print $week[8]."<br>";
+    print $week[9]."<br>"; // 없는 인덱스는 빈칸출력함
+    print $week[10]."<br>";
+    array_push($week,"hihi");
+    print_r($week);
 
     print "<hr>";
 
     $test2 = array(1, 3.44, "안녕"); //php 에서는 배열에 이렇게 다른 타입의 값이 들어가서 언뜻 편리하지만, 되도록이면 같은 배열당 같은 타입으로 관리해주는것이 좋다
-    print $test2[0];
-    print $test2[1];
-    print $test2[2];
-    print_r($test2);
+    print $test2[0]."<br>";
+    print $test2[1]."<br>";
+    print $test2[2]."<br>";
+    print_r($test2); //print_r 함수
 
 ?>

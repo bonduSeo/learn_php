@@ -54,4 +54,7 @@
         print $sign . $symbol;
     }
     
+// 소수점 관련 함수
+//floor버림 ceil올림 round반올림
+
 ?>
