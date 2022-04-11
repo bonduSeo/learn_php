@@ -1,17 +1,18 @@
 <?php
-    $arr1 = [1,2,3];
-    $arr2 = [1,2,3,4,5];
+    $arr1 = [1,2,3,4,5];
+    $arr2 = [1,2,3,6,7];
 
     $arr3 = [1,2,3,4,5];
+    // print_r($arr3);
 
-    $diff_arr = array_diff($arr1,$arr2);
+    $diff_arr = array_diff($arr1, $arr2);
 
 
     print_r($diff_arr);
     print "<br>";
 
-    print ($arr === $arr2)."<br>";
-    print ($arr === $arr3)."<br>";
+    print ($arr1 === $arr2)."--<br>";
+    print ($arr1 === $arr3)."<br>";
+
 
 ?>
-<!-- 왜안되노 -->
