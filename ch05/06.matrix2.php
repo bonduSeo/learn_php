@@ -20,6 +20,7 @@
     print $matrix[2][0];
     print "<br>";
     print count($child1);
+    
 
     //위 child1 처럼 배열을 복사하면 주소만 가지는게 아니라 아예 데이타가 복사됨
     

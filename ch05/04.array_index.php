@@ -12,7 +12,7 @@
     print "--끝--<br>";
 
     $numbers = array(10,20,5=>30,40);
-
+    $numbers[2] = 120; //숫자가 낮아도 뒤에 들어가는
     print_r($numbers);
     print "<br>";
     print "count : ".count($numbers)."<br>";
