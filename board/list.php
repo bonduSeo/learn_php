@@ -44,7 +44,7 @@
                 $create_at = $row['create_at'];
                 print "<tr>";
                     print "<td>${i_board}</td>";
-                    print "<td>${title}</td>";
+                    print "<td><a href='detail.php?i_board=${i_board}'>${title}</td>";
                     print "<td>${create_at}</td>";
                 print "<tr>";
             }
@@ -62,3 +62,5 @@
         border: 1px solid black;
     }
 </style>
+
+주소창 쿼리스트링 detail.php? 뒷부분에
