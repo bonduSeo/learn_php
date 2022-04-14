@@ -7,24 +7,24 @@
         print "$num1 $simbol $num2 = $result<br>";
     }
     function print_sum($num1, $num2) {
-        $result = $num1 + $num2;
-        print_result($num1, "+", $num2, $result);
+        
+        print_result($num1, "+", $num2, $num1 + $num2);
     }
     function print_minus($num1,$num2) {
-        $result = $num1 - $num2;
-        print_result($num1, "-", $num2, $result);
+        
+        print_result($num1, "-", $num2,  $num1 - $num2);
     }
     function print_multi($num1,$num2) {
-        $result = $num1 * $num2;
-        print_result($num1, "*", $num2, $result);
+        
+        print_result($num1, "*", $num2, $num1 * $num2);
     }
     function print_div($num1,$num2) {
-        $result = $num1 / $num2;
-        print_result($num1, "/", $num2, $result);
+      
+        print_result($num1, "/", $num2,  $num1 / $num2);
     }
     function print_mod($num1,$num2) {
-        $result = $num1 % $num2;
-        print_result($num1, "%", $num2, $result);
+       
+        print_result($num1, "%", $num2, $num1 % $num2);
     }
 
     print_sum($n1, $n2);
