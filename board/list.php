@@ -27,6 +27,7 @@
 </head>
 <body>
     <h1>리스트</h1>
+    <a href="write.php"><button>글쓰기</button></a>
     <table>
         <tr>
             <th>번호</th>
