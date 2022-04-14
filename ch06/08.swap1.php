@@ -13,6 +13,7 @@
     print "a: $a, b: $b<br>";
     print "----call by value<br>";
     //파라미터의 값만 (복사)전달
+    //call by value
 
 
     function swap_ref(&$n1, &$n2) {
@@ -29,6 +30,7 @@
     print "a: $a, b: $b<br>";
     print "---call by reference<br>";
     //파라미터의 저장된 위치를 전달
+    // call by reference
     //레퍼런스: 참조값(주소값)
 
     //글로벌별수를 사용하지않고 외부의 값을 바꿀수 있는 방법
