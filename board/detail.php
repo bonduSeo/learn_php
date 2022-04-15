@@ -20,7 +20,9 @@
         $title = $row["title"];
         $ctnt = $row["ctnt"];
         $create_at = $row["create_at"];
+        $updated_at = $row["updated_at"];
     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,11 +34,18 @@
 </head>
 <body>
     <a href="list.php"><button>리스트</button></a>
-    <a href="update.php?i_board=<?=$i_board?>"><button>수정</button></a>
+    <a href="mod.php?i_board=<?=$i_board?>"><button>수정</button></a>
     <a href="del_proc.php?i_board=<?=$i_board?>"><button>삭제</button></a>
     <div>제목 : <?= $title ?></div>
     <!--  타이틀변수 앞에 있는 꺽쇠물음표는: 표현식. 꺽쇠?php echo 와 동일? : php출력 축약형 -->
-    <div>작성일시 : <?= $create_at ?></div>
+    <div>
+        작성일시 : <?= $create_at ?>
+        <?php
+        if($updated_at) {
+            echo "| 수정일시 : ".$updated_at; 
+        }
+        ?>
+    </div>
     <div>내용 : <?= $ctnt ?></div>
 </body>
 </html>

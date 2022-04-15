@@ -1,12 +1,11 @@
 <?php
     include_once 'db.php';
-    $i_board = $_GET["i_board"];
-
+    $i_board = $_POST["i_board"];
     $title = $_POST["title"];
     $ctnt = $_POST["ctnt"];
 
-    print "title : $title <br>";
-    print "ctnt : $ctnt <br>";
+    // print "title : $title <br>";
+    // print "ctnt : $ctnt <br>";
 
     $sql = 
     "

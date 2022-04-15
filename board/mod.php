@@ -28,7 +28,9 @@
 <body>
     <h1>수정</h1>
     <a href="detail.php?i_board=<?=$i_board?>"><button>글로 이동</button></a>  
-    <form action="/board/update_proc.php?i_board=<?=$i_board?>" method="post">
+    <form action="/board/mod_proc.php" method="post"> 
+    <!-- 굳이 post로 날리는데 쿼리스트링으로 날릴 필욘 없다 -->
+        <div><input type="hidden" name="i_board" value="<?=$i_board?>"></div>
         <div><input type="text" name="title" value="<?=$title?>"></div>
         <div><textarea name="ctnt"><?=$ctnt?></textarea></div>
         <div>
