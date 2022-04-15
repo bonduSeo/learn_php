@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>글쓰기</h1>
-    <a href="list.php"><button>리스트</button></a>
+    <a href="list.php"><button>리스트</button></a>  
     <form action="/board/write_proc.php" method="post">
         <div><input type="text" name="title" placeholder="제목"></div>
         <div><textarea name="ctnt" placeholder="내용"></textarea></div>
@@ -19,3 +19,6 @@
     </form>
 </body>
 </html>
+
+
+<!-- 하이퍼링크주소앞에 / ./ 를 붙이냐 안붙이냐에 따라 결과값 다름 -->

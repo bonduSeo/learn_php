@@ -21,7 +21,7 @@
 
     
     $result = mysqli_query($conn, $sql); //결과 안보려면 $result = 빼도됨
-    mysqli_close($conn); //연결닫는거! 리소스관리때문에 아주 중요하다고함
+    mysqli_close($conn); //연결닫는거! 메모리 리소스관리때문에 아주 중요하다고함. 아님막서버닫힐수도
     
     print "result :$result"; //아래 리다이렉션 지우면 요 결과(입력이 성공했다)출력
 

@@ -21,4 +21,6 @@
     print $_SERVER;
 
     // php superglobal 검색
+
+    //$GLOBALS 배열에 전역함수가 저장됨. (함수 밖에서 선언한 모든함수, _GET _POST 등)
 ?>

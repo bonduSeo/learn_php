@@ -4,8 +4,8 @@
 
      $conn = get_conn();
      $sql = "SELECT i_board, title, create_at FROM t_board ORDER BY i_board DESC";
-     $result = mysqli_query($conn, $sql);
-     mysqli_close($conn);
+     $result = mysqli_query($conn, $sql); //이안에 셀렉트 정보가 다 담겨있다고함
+     mysqli_close($conn); //그래서 일찍닫음
     //  print_r($conn);
     //  print_r($result);
     //  print "<br>";
@@ -63,4 +63,3 @@
     }
 </style>
 
-주소창 쿼리스트링 detail.php? 뒷부분에

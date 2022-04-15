@@ -10,11 +10,12 @@
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
+    //커넥션 얻어오자마자 바로 쿼리문 실행하고 바로닫고: 나이스
 
     // print_r(mysqli_fetch_assoc($result));
     // print "<br>";
 
-    if($row = mysqli_fetch_assoc($result))
+    if($row = mysqli_fetch_assoc($result))  //1개있어서 while 안쓰고 if씀. 원리는 같네
     {
         $title = $row["title"];
         $ctnt = $row["ctnt"];
@@ -31,8 +32,10 @@
 </head>
 <body>
     <a href="list.php"><button>리스트</button></a>
+    <a href="update.php?i_board=<?=$i_board?>"><button>수정</button></a>
+    <a href="del_proc.php?i_board=<?=$i_board?>"><button>삭제</button></a>
     <div>제목 : <?= $title ?></div>
-    <!--  타이틀변수 앞에 있는 꺽쇠물음표는: 표현식. 꺽쇠?php print 와 동일? -->
+    <!--  타이틀변수 앞에 있는 꺽쇠물음표는: 표현식. 꺽쇠?php echo 와 동일? : php출력 축약형 -->
     <div>작성일시 : <?= $create_at ?></div>
     <div>내용 : <?= $ctnt ?></div>
 </body>
