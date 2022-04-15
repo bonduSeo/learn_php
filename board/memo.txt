@@ -3,4 +3,5 @@ https://www.google.com/search?q=%ED%95%98%ED%95%98&sxsrf=APq-WBvfTIyO90rvHRI9TeX
 
 <form action="" method="여기에">
 get 방식은 주소값에 정보가 찍힘 = 쿼리스트링
+  get방식에서 쓸수있는건 쿼리스트링밖에 없다.
 post는 정보안찍힘
