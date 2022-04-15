@@ -30,8 +30,8 @@
 </head>
 <body>
     <a href="list.php"><button>리스트</button></a>
-    <a href=""><button>수정</button></a>
-    <a href="del.php?t_no=<?=$t_no?>"><button>삭제</button></a>
+    <a href="mod.php?t_no=<?=$t_no?>"><button>수정</button></a>
+    <a href="del_proc.php?t_no=<?=$t_no?>"><button>삭제</button></a>
     <h1>제목: <?=$title?></h1>
     <div>
         작성일시: <?=$created_at?>
