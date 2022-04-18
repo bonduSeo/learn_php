@@ -1,3 +1,15 @@
+<?php
+    include_once('db_connect.php');
+    $sql = 
+    "
+        SELECT id FROM accounts
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,16 +19,20 @@
     <title>write</title>
 </head>
 <body>
+    <a href="create_account.php"><button>새로운아이디생성</button></a>
     <form action="write_proc.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="mode" value="insert">
         <table>
             <tr>
-                <td>아이디:</td>
+                <td>작성자:</td>
                 <td>
-                    <input type="radio" name="account" value="admin">admin
-                    <input type="radio" name="account" value="user1">user1
-                    <input type="radio" name="account" value="user2">user2
-                    <input type="radio" name="account" value="bondu">bondu
+                    <?php
+                        while($row=mysqli_fetch_assoc($result)) {
+                            $idn= $row['id'];
+                            echo "<input type='radio' name='account' value='$idn'>$idn";
+                        }
+                    ?>
+
                 </td>
             </tr>
             <tr>

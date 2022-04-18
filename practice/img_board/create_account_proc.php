@@ -17,7 +17,8 @@
      ";
      $conn = get_conn();
      $result = mysqli_query($conn, $sql);
-
+     mysqli_close($conn);
+    
     
     header("Location:create_account_success.php?id=$nickname&result=$result");
      

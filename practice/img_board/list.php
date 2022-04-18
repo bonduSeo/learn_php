@@ -24,7 +24,7 @@
 <body>
     <h1>jabstagram</h1>
     <a href="write.php"><button>글쓰기</button></a>
-    <br>
+    <br><br>
     <div id="container">
 
 <?php
@@ -34,7 +34,10 @@
         $writer = $row['writer'];
         echo "<div class='box'>";
             echo "<div id='account_box'>";
-                echo "<div>$writer</div>";
+                echo "<div>
+                        <div id='crop'><img src=view_icon.php?idn=$writer></div>
+                        <span> $writer</span>
+                    </div>";
                 echo "<a href='mod.php?id=$id'><button>수정</button></a>";
             echo "</div>";
 
@@ -50,11 +53,11 @@
 
 <style>
     #container {
-        border : 1px solid red;
+        /* border : 1px solid red; */
         max-width: 800px
     }
     .box {
-        border : 1px solid gray;
+        /* border : 1px solid gray; */
     }
     .box img {
         width : 100%;
@@ -65,5 +68,24 @@
     #account_box {
         display : flex;
         justify-content: space-between;
+    }
+    #account_box > div {
+        display: flex;
+    }
+    span {
+        margin: auto;
+    }
+    #crop {
+        overflow:hidden;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: inline-block;
+       
+    }
+    #crop img {
+        width: 2rem;
+        height: 2rem;
+        object-fit:cover;
     }
 </style>
