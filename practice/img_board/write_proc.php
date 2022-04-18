@@ -3,6 +3,8 @@
 
     $image = $_FILES["image"]["tmp_name"];
     $title = $_POST["title"];
+    $account = $_POST["account"];
+    // echo $account;
 
     // print_r($image);
 
@@ -14,10 +16,10 @@
 
     $sql = 
     "
-        INSERT INTO gallery
-        (image, title, width, height, file_size)
+        INSERT INTO gallery2
+        (writer, image, title, width, height, file_size)
         VALUES
-        ('$imageblob', '$title', '$width', '$height', '$filesize')
+        ('$account','$imageblob', '$title', '$width', '$height', '$filesize')
 
     ";
 

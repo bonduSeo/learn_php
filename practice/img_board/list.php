@@ -3,8 +3,8 @@
     include_once('db_connect.php');
     $sql = 
     "
-        SELECT id, title
-        FROM gallery
+        SELECT id, title, writer
+        FROM gallery2
         ORDER BY id DESC
     ";
     $conn = get_conn();
@@ -22,7 +22,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>insta</h1>
+    <h1>jabstagram</h1>
     <a href="write.php"><button>글쓰기</button></a>
     <br>
     <div id="container">
@@ -31,9 +31,15 @@
     while($row = mysqli_fetch_assoc($result)) {
         $id = $row['id'];
         $title = $row['title'];
+        $writer = $row['writer'];
         echo "<div class='box'>";
+            echo "<div id='account_box'>";
+                echo "<div>$writer</div>";
+                echo "<a href='mod.php?id=$id'><button>수정</button></a>";
+            echo "</div>";
+
         echo "<img src=./view.php?id=$id>";
-        echo "<br>".$title."<br>";
+        echo "<div id=textbox>${title}</div>";
         echo "</div>";
     }
 
@@ -52,5 +58,12 @@
     }
     .box img {
         width : 100%;
+    }
+    #textbox {
+        min-height : 60px;
+    }
+    #account_box {
+        display : flex;
+        justify-content: space-between;
     }
 </style>
