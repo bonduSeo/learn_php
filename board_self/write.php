@@ -11,7 +11,7 @@
     <a href="list.php"><button>글목록</button></a>
     <form action="write_proc.php" method="post">
         <div><input type="text" name="title" placeholder="제목" ></div>
-        <div><textarea name="ctnt" id="txt_area" cols="30" rows="10" ploaceholder="내용"></textarea></div>
+        <div><textarea name="ctnt" id="txt_area" cols="30" rows="10" placeholder="내용"></textarea></div>
         <input type="submit" value="글등록">
         <input type="reset" value="초기화">
     </form>
