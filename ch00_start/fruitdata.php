@@ -19,7 +19,7 @@
     <table border="1">
         <tr>
             <th>이름</th>
-            <th>가격</th>
+            <th>가격</th> 
         </tr>
     <?php 
         foreach($fruit as $name => $price)

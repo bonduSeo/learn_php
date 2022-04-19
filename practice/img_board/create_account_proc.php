@@ -78,8 +78,6 @@
    
  
 
-  
-
 
     try {
         while($row = mysqli_fetch_assoc($result_account)) {
@@ -97,6 +95,7 @@
         echo "<a href='create_account.php'><button>다른 아이디 만들기</button></a>";
         die();
     }
+  
      mysqli_close($conn);
     
      //이부분 중복된아이디일경우 에러뜨는데, 원하는경고문뜨는식으로 조절할수없나
