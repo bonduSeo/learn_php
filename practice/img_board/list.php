@@ -3,11 +3,16 @@
     include_once('db_connect.php');
     $sql = 
     "
-        SELECT id, title, writer
-        FROM gallery2
+        SELECT A.id, A.title, A.writer,A.img_url, B.icon_url
+        FROM gallery2 A
+        INNER JOIN accounts B
+            ON A.writer=B.id
         ORDER BY id DESC
     ";
+
     $conn = get_conn();
+
+
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
 
@@ -22,7 +27,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>jabstagram</h1>
+    <h1><a href="list.php" 
+    style="
+        color:black; 
+        text-decoration:none;">jabstagram</a></h1>
     <a href="write.php"><button>글쓰기</button></a>
     <br><br>
     <div id="container">
@@ -32,16 +40,18 @@
         $id = $row['id'];
         $title = $row['title'];
         $writer = $row['writer'];
+        $img_url = $row["img_url"];
+        $icon_url = $row["icon_url"];
         echo "<div class='box'>";
             echo "<div id='account_box'>";
                 echo "<div>
-                        <div id='crop'><img src=view_icon.php?idn=$writer></div>
+                        <div id='crop'><img src=$icon_url></div>
                         <span> $writer</span>
                     </div>";
                 echo "<a href='mod.php?id=$id'><button>수정</button></a>";
             echo "</div>";
 
-        echo "<img src=./view.php?id=$id>";
+        echo "<img src=$img_url>";
         echo "<div id=textbox>${title}</div>";
         echo "</div>";
     }

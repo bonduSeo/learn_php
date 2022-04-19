@@ -10,7 +10,7 @@
     
     <form action="create_account_proc.php" method="post" enctype="multipart/form-data">
         <label for="nickname">아이디 입력: </label><input type="text" name="nickname" id="nickname"><br>
-        <label for="profile_img">프로필이미지 선택: </label><input type="file" name="image" id="profile_img">
+        <label for="profile_img">프로필이미지 선택: </label><input type="file" name="fileToUpload" id="profile_img">
         <br>
         <input type="submit" value="제출"><input type="reset" value="리셋">
 

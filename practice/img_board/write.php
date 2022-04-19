@@ -20,7 +20,7 @@
 </head>
 <body>
     <a href="create_account.php"><button>새로운아이디생성</button></a>
-    <form action="write_proc.php" method="post" enctype="multipart/form-data">
+    <form action="upload.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="mode" value="insert">
         <table>
             <tr>
@@ -37,7 +37,7 @@
             </tr>
             <tr>
                 <td>올릴 이미지:</td>
-                <td><input type="file" name="image"></td>
+                <td><input type="file" name="fileToUpload"></td>
             </tr>
             <tr>
                 <td>할말</td>
