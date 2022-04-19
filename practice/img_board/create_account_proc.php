@@ -16,7 +16,7 @@
              $uploadOk = 1;
          } else {
              echo "File is not an image.";
-             $uploadOk = 0;
+             $uploadOk = 2;
          }
      }
      // Check if file already exists
@@ -37,7 +37,7 @@
      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
      && $imageFileType != "gif" ) {
          echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-         $uploadOk = 0;
+         $uploadOk = 2;
      }
      // Check if $uploadOk is set to 0 by an error
      if ($uploadOk == 0) {
@@ -45,7 +45,7 @@
          die();
      // if everything is ok, try to upload file
      } else {
-         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) || $uploadOk==2)  {
              // echo "<p>The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.</p>";
              // echo "<br><img src=../../uploads/".basename( $_FILES["fileToUpload"]["name"]). ">";
              // echo "<br><button type='button' onclick='history.back()'>돌아가기</button>";
@@ -55,8 +55,11 @@
              die();
          }
      }
- 
+     if ($uploadOk==1) {
      $img_url = "../../uploads/icons".basename( $_FILES['fileToUpload']['name']);
+     } else if ($uploadOk==2) {
+         $img_url = "../../uploads/icons/basic.png";
+     }
      $sql = 
     "
         INSERT INTO accounts
