@@ -37,7 +37,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "<p>The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.</p>";
-		echo "<br><img src=/uploads/". basename( $_FILES["fileToUpload"]["name"]). ">";
+		echo "<br><img src='c:uploads/'".basename( $_FILES["fileToUpload"]["name"]). ">";
 		echo "<br><button type='button' onclick='history.back()'>돌아가기</button>";
     } else {
         echo "<p>Sorry, there was an error uploading your file.</p>";
