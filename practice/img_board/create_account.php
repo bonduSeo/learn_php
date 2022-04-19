@@ -15,6 +15,7 @@
         <input type="submit" value="제출"><input type="reset" value="리셋">
 
     </form>
+    <a href="write.php"><button>뒤로가기</button></a>
 
 </body>
 </html>
