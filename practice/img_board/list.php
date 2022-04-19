@@ -55,6 +55,7 @@
         echo "<div id=textbox>${title}</div>";
         echo "</div>";
     }
+    mysqli_free_result($result);
 
 ?>
     </div>
