@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once('db_connect.php');
     $sql = 
     "
@@ -19,22 +20,11 @@
     <title>write</title>
 </head>
 <body>
-    <a href="create_account.php"><button>새로운아이디생성</button></a>
+   
     <form action="upload.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="mode" value="insert">
         <table>
-            <tr>
-                <td>작성자:</td>
-                <td>
-                    <?php
-                        while($row=mysqli_fetch_assoc($result)) {
-                            $idn= $row['id'];
-                            echo "<input type='radio' name='account' value='$idn'>$idn";
-                        }
-                    ?>
-
-                </td>
-            </tr>
+           
             <tr>
                 <td>올릴 이미지:</td>
                 <td><input type="file" name="fileToUpload"></td>

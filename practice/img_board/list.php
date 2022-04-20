@@ -5,15 +5,15 @@
     if(isset($_SESSION['log_status'])) {
         $log_id = $_SESSION['log_id'];
         // print $log_id;
-    $sql2 =
-    "
-        SELECT icon_url FROM accounts2
-        WHERE id = '$log_id'
-    ";
-    $result_log_status = mysqli_query($conn, $sql2);
-    $row = mysqli_fetch_assoc($result_log_status);
-    $profile_url = $row['icon_url'];
-}
+        $sql2 =
+        "
+            SELECT icon_url FROM accounts2
+            WHERE id = '$log_id'
+        ";
+        $result_log_status = mysqli_query($conn, $sql2);
+        $row = mysqli_fetch_assoc($result_log_status);
+        $profile_url = $row['icon_url'];
+    }
 
     
     $sql = 
@@ -47,14 +47,15 @@
         text-decoration:none;">jabstagram</a></h1>
     <?php
         if(isset($_SESSION['log_status'])) {
-        echo "<div id='profile'><img src=$profile_url></div>";
+        echo "<div id='profile'><a href='myprofile.php'><img src=$profile_url></a></div>";
         }
-    ?>
-    <a href="write.php"><button>글쓰기</button></a>
+    
+    
     
 
-<?php
+
     if(isset($_SESSION['log_status'])){
+        echo "<a href='write.php'><button>글쓰기</button></a>";
         echo "<a href='logout.php'><button>로그아웃</button></a>";
     } 
     else {
@@ -78,7 +79,16 @@
                         <div id='crop'><img src=$icon_url></div>
                         <span> $writer</span>
                     </div>";
-                echo "<a href='mod.php?id=$id'><button>수정</button></a>";
+                if(isset($_SESSION['log_status'])) {
+                    if($log_id==$writer) {
+                        echo "
+                                <form action='mod.php' method='post'>
+                                    <input type='hidden' name='id' value='$id'>
+                                    <input type='submit' value='수정'>
+                                </form>   
+                            ";
+                    }
+                }
             echo "</div>";
 
         echo "<img src=$img_url>";
@@ -125,7 +135,7 @@
        
     }
     #crop img {
-        width: 2rem;
+        /* width: 2rem; */
         height: 2rem;
         object-fit:cover;
     }
@@ -135,8 +145,9 @@
         width: 2rem;
         height: 2rem;
         border-radius:50%;
+        
     }
     #profile img {
-        width: 2rem;
+        height: 2rem;
     }
 </style>

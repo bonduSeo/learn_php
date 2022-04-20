@@ -1,10 +1,10 @@
 <?php
     include_once('db_connect.php');
-    $id = $_GET["id"];
+    $id = $_POST["id"];
 
     $sql = 
     "
-        SELECT title, writer
+        SELECT title, writer,img_url
         FROM gallery3
         WHERE id=$id
     ";
@@ -15,6 +15,7 @@
     if($row = mysqli_fetch_assoc($result)) {
         $title = $row["title"];
         $writer = $row["writer"];
+        $img_url = $row["img_url"];
     }
 
     
@@ -34,10 +35,13 @@
         <div id="account_box">
             <div><?=$writer?></div>
             <a href='list.php'><button>수정취소</button></a>
-            <a href='del_proc.php?id=<?=$id?>'><button>글 삭제</button></a>
+            <form action="del_proc.php" method="post" style="display:inline-block">
+                <input type="hidden" name="id" value=<?=$id?>>
+                <input type="submit" value="글 삭제">
+            </form>
         </div>
 
-        <img src=./view.php?id=<?=$id?>>
+        <img src=<?=$img_url?> width=50%>
         <form action="mod_proc.php" method="post">
             <input type="hidden" name="id" value="<?=$id?>">
             <textarea name="title" cols="60" rows="10"><?=$title?></textarea>
