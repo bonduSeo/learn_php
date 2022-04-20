@@ -131,23 +131,19 @@
         width: 2rem;
         height: 2rem;
         border-radius: 50%;
-        display: inline-block;
-       
     }
     #crop img {
-        /* width: 2rem; */
         height: 2rem;
         object-fit:cover;
     }
-
     #profile {
         overflow: hidden;
         width: 2rem;
         height: 2rem;
         border-radius:50%;
-        
     }
     #profile img {
-        height: 2rem;
+       height: 2rem;
+       object-fit:cover;
     }
 </style>

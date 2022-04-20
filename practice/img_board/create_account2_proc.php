@@ -33,15 +33,15 @@
     $sql =
     "
         INSERT INTO accounts2
-        (id, a_password)
+        (id, a_password, icon_url)
         VALUES
-        ('$idn', 'password($pass1)')
+        ('$idn', password('$pass1'),'../../uploads/icons/basic.png' )
     ";
     $result = mysqli_query($conn, $sql);
 
     if($result) {
         echo "아이디 생성 성공<br>";
-        echo "<a href='create_account2'><button>로그인</button></a>";
+        echo "<a href='login.php'><button>로그인</button></a>";
     }
 
 
