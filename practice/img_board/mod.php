@@ -5,7 +5,7 @@
     $sql = 
     "
         SELECT title, writer
-        FROM gallery2
+        FROM gallery3
         WHERE id=$id
     ";
     $conn=get_conn();

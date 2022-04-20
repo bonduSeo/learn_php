@@ -16,7 +16,7 @@
 
     $sql = 
     "
-        INSERT INTO gallery2
+        INSERT INTO gallery3
         (writer, image, title, width, height, file_size)
         VALUES
         ('$account','$imageblob', '$title', '$width', '$height', '$filesize')

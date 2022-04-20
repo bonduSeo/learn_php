@@ -1,20 +1,34 @@
 <?php
-
     include_once('db_connect.php');
+    session_start();
+    $conn = get_conn();
+    if(isset($_SESSION['log_status'])) {
+        $log_id = $_SESSION['log_id'];
+        // print $log_id;
+    $sql2 =
+    "
+        SELECT icon_url FROM accounts2
+        WHERE id = '$log_id'
+    ";
+    $result_log_status = mysqli_query($conn, $sql2);
+    $row = mysqli_fetch_assoc($result_log_status);
+    $profile_url = $row['icon_url'];
+}
+
+    
     $sql = 
     "
         SELECT A.id, A.title, A.writer,A.img_url, B.icon_url
-        FROM gallery2 A
-        INNER JOIN accounts B
+        FROM gallery3 A
+        INNER JOIN accounts2 B
             ON A.writer=B.id
         ORDER BY id DESC
     ";
 
-    $conn = get_conn();
-
-
     $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
+    
+    // mysqli_close($conn);
+   
 
 
 ?>
@@ -31,7 +45,23 @@
     style="
         color:black; 
         text-decoration:none;">jabstagram</a></h1>
+    <?php
+        if(isset($_SESSION['log_status'])) {
+        echo "<div id='profile'><img src=$profile_url></div>";
+        }
+    ?>
     <a href="write.php"><button>글쓰기</button></a>
+    
+
+<?php
+    if(isset($_SESSION['log_status'])){
+        echo "<a href='logout.php'><button>로그아웃</button></a>";
+    } 
+    else {
+        echo "<a href='login.php'><button>로그인</button></a>";
+    }
+?>
+    
     <br><br>
     <div id="container">
 
@@ -98,5 +128,15 @@
         width: 2rem;
         height: 2rem;
         object-fit:cover;
+    }
+
+    #profile {
+        overflow: hidden;
+        width: 2rem;
+        height: 2rem;
+        border-radius:50%;
+    }
+    #profile img {
+        width: 2rem;
     }
 </style>

@@ -5,7 +5,7 @@
     $sql = 
     "
         SELECT image
-        FROM gallery2
+        FROM gallery3s
         WHERE id=$id
     ";
     $conn = get_conn();

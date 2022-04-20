@@ -60,7 +60,7 @@
     $img_url = "../../uploads/".basename( $_FILES['fileToUpload']['name']);
     $sql = 
    "
-       INSERT INTO gallery2
+       INSERT INTO gallery3
        (writer, img_url, title)
        VALUES
        ('$account','$img_url', '$title')

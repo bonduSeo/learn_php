@@ -5,7 +5,7 @@
 
     $sql = 
     "
-        UPDATE gallery2
+        UPDATE gallery3
         SET title = '$title'
         WHERE id=$id
     ";

@@ -4,7 +4,7 @@
 
     $sql = 
     "
-        DELETE FROM gallery2
+        DELETE FROM gallery3
         WHERE id=$id
     ";
     $conn = get_conn();
