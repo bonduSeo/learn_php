@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/71e09e17ba.js" crossorigin="anonymous"></script>
 <?php
     define("HOSTNAME", "localhost");
     define("USERNAME", "root");
@@ -9,7 +10,7 @@
        return mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB, PORT);
     }
 
-    
+
    function upload_file($fileToUpload) {
       $target_dir = "../../uploads/";
     $target_file = $target_dir . basename($fileToUpload["name"]);
@@ -52,6 +53,7 @@
         die();
     // if everything is ok, try to upload file
     } else {
+        print $fileToUpload['error'];
         if (move_uploaded_file($fileToUpload["tmp_name"], $target_file)) {
             // echo "<p>The file ". basename( $fileToUpload["name"]). " has been uploaded.</p>";
             // echo "<br><img src=../../uploads/".basename( $fileToUpload["name"]). ">";
@@ -66,3 +68,26 @@
     $img_url = "../../uploads/".basename( $fileToUpload['name']);
     return $img_url;
    }
+
+
+
+function liked($id, $idn) {
+    $sql = 
+    "
+        SELECT num, idn FROM liketable
+        WHERE id = '$id'
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $wholike = array();
+    $n=0;
+    $wholike['me'] = 0;
+    while($row = mysqli_fetch_assoc($result)) {
+        $wholike[$n++] = $row['idn'];
+        if($row['idn'] == $idn) {
+            $wholike['me'] = $row['num'];
+        }
+    }
+    return $wholike;
+}
+   
