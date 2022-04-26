@@ -1,7 +1,7 @@
 <?php
     include_once('db.php');
 
-    function ins_user($param) {
+    function ins_user(&$param) {
         $uid = $param["uid"];
         $upw = $param["upw"];
         $nm = $param["nm"];
@@ -18,7 +18,7 @@
         return $result;
     }
 
-    function sel_user($param) {
+    function sel_user(&$param) {
         $uid = $param["uid"];
         $sql =
         "   SELECT i_user, uid, upw, nm, gender
