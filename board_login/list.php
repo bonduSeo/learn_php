@@ -1,9 +1,12 @@
 <?php
     session_start();
+    $nm = "";
     if(isset($_SESSION["login_user"]))  {
         $login_user = $_SESSION["login_user"];
         $nm = $login_user["nm"];
     }
+    include_once('db/db_board.php');
+    $list = sel_board_list();
 ?>
 
 <!DOCTYPE html>
@@ -21,45 +24,43 @@
             <?=isset($_SESSION["login_user"]) ? "<div>".$nm."님 환영합니다.</div>":""?>
             <div>
                 <a href="list.php">리스트</a>
-                <a href="write.php">글쓰기</a>
-                <?=
-                    isset($_SESSION["login_user"]) 
-                    ? "<a href='logout.php'>로그아웃</a>" 
-                    : "<a href='login.php'>로그인</a>"
-                ?>      
-               <!-- xxphp echo의 축약형 -->
+                <?php   if(isset($_SESSION["login_user"])) {  ?>
+                    <a href="write.php">글쓰기</a>
+                    <a href='logout.php'>로그아웃</a>
+                <?php } else { ?>
+                    <a href='login.php'>로그인</a>
+                <?php } ?>
+     
+            
             </div>
         </header>
         <main>
         <h1>리스트</h1>
-        <table>
-            <tr>
-                <th>no</th>
-                <th>title</th>
-                <th>writer</th>
-                <th>created_at</th>
-            </tr>
-            <?php
-                include_once('db/db_board.php');
-                $result = sel_list();
-                while($row = mysqli_fetch_assoc($result)) {
-                    $i_board = $row['i_board'];
-                    $title = $row['title'];
-                    $nm = $row['nm'];
-                    $created_at = $row['created_at'];
-
-                    echo "<tr>";
-                        echo "<td>".$i_board."</td>";
-                        echo "<td>".$title."</td>";
-                        echo "<td>".$nm."</td>";
-                        echo "<td>".$created_at."</td>";
-                    echo "</tr>";
-                }
-            ?>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>글번호</th>
+                        <th>제목</th>
+                        <th>글쓴이</th>
+                        <th>등록일시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($list as $item) { ?>
+                        <!-- while($item = mysqli_fetch_assoc($list)) -->
+                        <tr>
+                            <td><?=$item["i_board"]?></td>
+                            <td><a href="detail.php?i_board=<?=$item['i_board']?>"><?=$item["title"]?></a></td>
+                            <td><?=$item["nm"]?></td>
+                            <td><?=$item["created_at"]?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </main>
     </div>
    
    
 </body>
 </html>
+
