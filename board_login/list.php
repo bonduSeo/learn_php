@@ -1,12 +1,30 @@
 <?php
+      include_once('db/db_board.php');
     session_start();
     $nm = "";
+    
+    if(!isset($_GET["page"])) {
+        $page = 1;
+    } else {
+        $page = $_GET["page"];
+        $page = intval($page); //정수로 형변환
+    }
+    // print "page : ".$page;
+
     if(isset($_SESSION["login_user"]))  {
         $login_user = $_SESSION["login_user"];
         $nm = $login_user["nm"];
     }
-    include_once('db/db_board.php');
-    $list = sel_board_list();
+    $row_count = 20;
+    $param = [
+        "row_count" => $row_count,
+        "start_idx" => ($page - 1) * $row_count
+    ];
+    $paging_count = sel_paging_count($param);
+        
+
+    $list = sel_board_list($param);
+
 ?>
 
 <!DOCTYPE html>
@@ -29,9 +47,7 @@
                     <a href='logout.php'>로그아웃</a>
                 <?php } else { ?>
                     <a href='login.php'>로그인</a>
-                <?php } ?>
-     
-            
+                <?php } ?>      
             </div>
         </header>
         <main>
@@ -57,6 +73,12 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <div>
+                <?php   for($i=1; $i<=$paging_count; $i++) {    ?>
+                            <span><a href="list.php?page=<?=$i?>"><?=$i?></a></span>
+                <?php   }   ?>
+                
+            </div>
         </main>
     </div>
    

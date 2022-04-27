@@ -27,12 +27,12 @@
     <?php 
         session_start();
         if(isset($_SESSION["login_user"])) {
-            if($_SESSION["login_user"]["i_user"] === $i_user ) {
-                echo    "<div>
-                        <a href='mod.php'><button>수정</button></a>
-                        <a href='del.php'><button>수정</button></a>
-                        </div>";
-            }
+            if($_SESSION["login_user"]["i_user"] === $i_user ) { ?>
+                <div>
+                <a href='mod.php?i_board=<?=$i_board?>'><button>수정</button></a>
+                <button onclick="isDel();">삭제</button>
+                </div>
+    <?php   }
         }
     ?>
 
@@ -45,7 +45,26 @@
     </div>
     <div>내용 : <?=$ctnt?></div>
     
-    
+    <script>
+        // 요렇게 자바스크립트 추가할수있지만 , 파일만들어서하는게 깔끔하고 유지보수좋음
+        function isDel() {
+            // console.log('isDel 실행됨');
+            // const result = confirm('삭제하시겠습니까?');
+            // console.log(result);
+            // if(result) {
+            //     console.log('삭제할게요');
+            // } else {
+            //     console.log('취소할게요');
+            // }
+
+            if(confirm('삭제하시겠습니까?')) {
+                location.href = "del.php?i_board=<?=$i_board?>";
+            } 
+
+            //자바스크립트는 보통문자열에서 홑따옴표
+            //console.log f12창 콘솔에서 볼수있음
+        }
+    </script>
    
 </body>
 </html>

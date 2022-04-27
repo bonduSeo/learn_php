@@ -17,17 +17,31 @@
         return $result;
     }
 
-    function sel_board_list() {
+    function sel_board_list(&$param) {
+        $start_idx = $param["start_idx"];
+        $row_count = $param["row_count"];
         $sql =
         "   SELECT A.i_board, A.title, B.nm, A.created_at
             FROM t_board AS A
             INNER JOIN t_user AS B
             ON A.i_user = B.i_user
-            ORDER BY i_board DESC;
+            ORDER BY i_board DESC
+            LIMIT $start_idx, $row_count
         ";
         $conn = get_conn();
         $result = mysqli_query($conn, $sql);
         return $result;
+    }
+    function sel_paging_count(&$param) {
+        $row_count = $param["row_count"];
+        $sql =
+        "   SELECT CEIL(COUNT(i_board) / $row_count) as cnt
+            FROM t_board
+        ";
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        return $row["cnt"];
     }
 
     function sel_board(&$param) {
@@ -43,3 +57,33 @@
         $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
         return $result;
     }
+
+    function upd_board(&$param) {
+        $i_board = $param["i_board"];
+        $title = $param["title"];
+        $ctnt = $param["ctnt"];
+        $i_user = $param["i_user"];
+        $sql = 
+        "   UPDATE t_board
+            SET title = '$title'
+            ,ctnt = '$ctnt'
+            WHERE i_board = $i_board AND i_user = $i_user
+        ";
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);
+        return $result;
+    }
+
+    function del_board(&$param) {
+        $i_board = $param["i_board"];
+        $i_user = $param["i_user"];
+        $sql =
+        "   DELETE FROM t_board
+            WHERE i_board = '$i_board' 
+            AND i_user = '$i_user'
+        ";
+        $conn = get_conn();
+        return mysqli_query($conn, $sql);
+    }
+
+   

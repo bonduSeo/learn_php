@@ -27,3 +27,6 @@ CREATE TABLE t_board(
 	-not null
 	-index
 */
+
+SELECT COUNT(t_board)
+form t_board;
