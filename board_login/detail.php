@@ -13,6 +13,8 @@
         $created_at = $result['created_at'];
         $updated_at = $result['updated_at'];
     }
+    $pre_board = sel_pre_board($i_board);
+    $next_board = sel_next_board($i_board);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +39,7 @@
     ?>
 
     <h1>제목 : <?=$title?></h1>
+    <div>글 번호 : <?=$i_board?></div>
     <div>글쓴이 : <?=$nm?></div>
     <div>등록일시 : <?=$created_at?>
         <?php if(isset($updated_at)) {
@@ -44,6 +47,14 @@
         } ?>
     </div>
     <div>내용 : <?=$ctnt?></div>
+    <div>
+        <?php if($pre_board) {           ?>
+            <a href="detail.php?i_board=<?=$pre_board?>"><button>이전글</button></a>
+        <?php } if($next_board) {        ?>
+            <a href="detail.php?i_board=<?=$next_board?>"><button>다음글</button></a>
+        <?php }                          ?>
+    </div>
+
     
     <script>
         // 요렇게 자바스크립트 추가할수있지만 , 파일만들어서하는게 깔끔하고 유지보수좋음

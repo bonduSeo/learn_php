@@ -23,3 +23,13 @@ th,
 td {
     border: 1px solid black;
 }
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.pageSelected {
+    font-weight: bold;
+}
+.pageSelected a {color: red;}

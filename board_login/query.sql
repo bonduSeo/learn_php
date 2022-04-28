@@ -28,5 +28,27 @@ CREATE TABLE t_board(
 	-index
 */
 
-SELECT COUNT(t_board)
-form t_board;
+SELECT COUNT(i_board) / 20
+FROM t_board;
+
+
+SELECT * FROM t_board
+WHERE i_board>=110
+LIMIT 0,2;
+
+SELECT * FROM t_board
+WHERE i_board<=110
+LIMIT COUNT(;
+
+-- 이전글
+SELECT * 
+FROM t_board 
+WHERE i_board>110
+LIMIT 1;
+
+--다음글
+SELECT i_board, title 
+FROM t_board 
+WHERE i_board<110 
+ORDER BY i_board DESC
+LIMIT 1;
