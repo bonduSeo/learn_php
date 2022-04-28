@@ -2,19 +2,20 @@
       include_once('db/db_board.php');
     session_start();
     $nm = "";
+    if(isset($_SESSION["login_user"]))  {
+        $login_user = $_SESSION["login_user"];
+        $nm = $login_user["nm"];
+    }
     
     if(!isset($_GET["page"])) {
         $page = 1;
     } else {
         $page = $_GET["page"];
-        $page = intval($page); //정수로 형변환
+        $page = intval($page); //정수로 형변환 php는안해도될텐데 대부분의언어에서 이런식
     }
     // print "page : ".$page;
 
-    if(isset($_SESSION["login_user"]))  {
-        $login_user = $_SESSION["login_user"];
-        $nm = $login_user["nm"];
-    }
+
     $row_count = 20;
     $param = [
         "row_count" => $row_count,
@@ -75,7 +76,9 @@
             </table>
             <div>
                 <?php   for($i=1; $i<=$paging_count; $i++) {    ?>
-                            <span><a href="list.php?page=<?=$i?>"><?=$i?></a></span>
+                            <span class="<?=$i === $page ? "pageSelected" : ""?>">
+                                <a href="list.php?page=<?=$i?>"><?=$i?></a>
+                            </span>
                 <?php   }   ?>
                 
             </div>
