@@ -1,4 +1,5 @@
 <?php
+    include_once('db/db_user.php');
     session_start();
     $login_user = $_SESSION["login_user"];
     define("PROFILE_PATH", "img/profile/");
@@ -31,12 +32,30 @@
     // utf-8 한글때문에 mb_사용
 
      $target_filenm = gen_uuid_v4() . $ext;
-     $target_full_path = PROFILE_PATH . $login_user["i_user"];
-     if(!is_dir($target_full_path)) {
-         mkdir($target_full_path, 0777, true);
+     $target_path = PROFILE_PATH . $login_user["i_user"];
+     if(!is_dir($target_path)) {
+         mkdir($target_path, 0777, true);
      }
-     $imageUpload = move_uploaded_file($_FILES['img']['tmp_name'], $target_full_path . "/" . $target_filenm);
+     $imageUpload = move_uploaded_file($_FILES['img']['tmp_name'], $target_path . "/" . $target_filenm);
      if($imageUpload) {
+        
+        //예전 등록된프사가있으면 삭제
+        if($login_user["profile_img"]) {
+            $saved_img = $target_path . "/" . $login_user["profile_img"];
+            if(file_exists($saved_img)) {
+                unlink($saved_img);
+            }
+        }
+
+        //DB에 저장
+        $param = [
+            "profile_img" => $target_filenm,
+            "i_user" => $login_user["i_user"]
+        ];
+
+        $result = upd_profile_img($param);
+        $_SESSION["login_user"]["profile_img"] = $target_filenm; 
+
          header("Location: profile.php");
      } else {
          echo "업로드실패";

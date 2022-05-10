@@ -22,6 +22,7 @@ include_once ('db/db_user.php');
     if($upw === $result["upw"]) {
         session_start();
         $_SESSION["login_user"] = $result;
+      
         header("Location: list.php");
     } else {
         header("Location: login.php");
