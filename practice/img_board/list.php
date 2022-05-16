@@ -92,6 +92,26 @@
             echo "</div>";
 
         echo "<img src=$img_url>";
+        $likecolor = 'black';
+
+        if(isset($_SESSION['log_id'])) {
+            if(liked($id,$log_id)['me']) {
+                $likecolor = 'red';
+            } else {
+                $likecolor = 'black';
+            }
+        }
+        echo 
+            "
+            <div>
+            <a href='like.php?id=$id'><i class='fa-solid fa-heart' style=color:$likecolor></i></a>";
+        
+        if(isset($_SESSION['log_id'])) {
+        $likenum = count(liked($id,$log_id))-1;
+        echo "<a href='wholike.php?id=$id'>".$likenum."</a>";
+        }
+        echo "</div>";
+      
         echo "<div id=textbox>${title}</div>";
         echo "</div>";
     }
@@ -134,16 +154,20 @@
     }
     #crop img {
         height: 2rem;
+        width:2rem;
         object-fit:cover;
     }
-    #profile {
+    #profile a,#profile {
         overflow: hidden;
         width: 2rem;
         height: 2rem;
         border-radius:50%;
+        display: block;
     }
     #profile img {
+       width: 2rem;
        height: 2rem;
        object-fit:cover;
     }
+    
 </style>
