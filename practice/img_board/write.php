@@ -3,7 +3,7 @@
     include_once('db_connect.php');
     $sql = 
     "
-        SELECT id FROM accounts
+        SELECT id FROM accounts2
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);

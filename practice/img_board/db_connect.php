@@ -1,7 +1,8 @@
 <?php
     define("HOSTNAME", "localhost");
     define("USERNAME", "root");
-    define("PASSWORD", "506greendg@");
+    // define("PASSWORD", "506greendg@");
+    define("PASSWORD", "9090bondu");
     define("DB", "board1");
     define("PORT", "3306");
 
