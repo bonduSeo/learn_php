@@ -52,3 +52,7 @@ FROM t_board
 WHERE i_board<110 
 ORDER BY i_board DESC
 LIMIT 1;
+
+
+SELECT * FROM t_store
+WHERE store_num = 1;
