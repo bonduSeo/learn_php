@@ -5,7 +5,7 @@ class Fruit
     private $color;
     private $price;
 
-    function __construct($name, $color, $price)
+    function __construct($name = null, $color = null, $price = null)
     {
         $this->name = $name;
         $this->color = $color;
@@ -22,7 +22,8 @@ class Fruit
 
 $apple = new Fruit("Apple",  "red", 1000);
 $banana = new Fruit("Banana", "yellow", 500);
-// $test = new Fruit("Banana", "yellow");
+$test = new Fruit("SJ", null, "red");
+$test->printFruit();
 //이렇게하면 에러떠서 constructor2.php의 방법이 있음
 
 $apple->printFruit();

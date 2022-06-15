@@ -28,22 +28,13 @@ class Fruit
         return $this;
     }
 
-    /**
-     * Set the value of color
-     *
-     * @return  self
-     */
+
     public function setColor($color)
     {
         $this->color = $color;
         return $this;
     }
 
-    /**
-     * Set the value of price
-     *
-     * @return  self
-     */
     public function setPrice($price)
     {
         $this->price = $price;
