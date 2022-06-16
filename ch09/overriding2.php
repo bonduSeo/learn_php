@@ -4,14 +4,14 @@ class Animal
 {
     function crying()
     {
-        print "동물이 운다. <br>";
+        print "동물이 운다. \n";
     }
 }
 class Dog extends Animal
 {
     function crying()
     {
-        print "강아지가 멍멍.<br>";
+        print "강아지가 멍멍.\n";
     }
 }
 
@@ -19,7 +19,7 @@ class Chiwawa extends Dog
 {
     // function crying()
     // {
-    //     print "치와와가 왕왕 <br>";
+    //     print "치와와가 왕왕 \n";
     // }
 }
 
@@ -27,7 +27,7 @@ class Cat extends Animal
 {
     function crying()
     {
-        print "고양이가 야옹~<br>";
+        print "고양이가 야옹~\n";
     }
 }
 

@@ -13,12 +13,29 @@
       <input id="button" type="button" value="입력" />
     </form>
     <script>
+      const ctnt = document.querySelector("#ctnt");
+
       const button = document.querySelector("#button");
       const inputText = document.querySelector('input[type="text"]');
       button.addEventListener("click", () => {
-        inputText.value;
-        fetch(`chat.php?input=${inputText.value}`).then((res) => {});
+        fetch(`chat.php?input=${inputText.value}`)
+          .then((res) => {
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data);
+            printChat(data);
+          })
+          .catch(function (e) {
+            console.log(e);
+          });
       });
+
+      function printChat(data) {
+        data.forEach((line) => {
+          ctnt.append(line + "<br>");
+        });
+      }
     </script>
   </body>
 </html>
